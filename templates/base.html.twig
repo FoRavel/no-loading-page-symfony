@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{path('base')}}">Index</a></li>
+            <li><a href="{{path('base_a')}}">Page 1</a></li>
+            <li><a href="{{path('base_b')}}">Page 2</a></li>
+            <li><a href="{{path('base_c')}}">Page 3</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="view current-view">
+            {% block body %}{% endblock %}
+        </div>
+        <div class="view next-view">
+
+        </div>
+    </div>
+    {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+
 </html>
